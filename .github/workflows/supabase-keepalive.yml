@@ -15,7 +15,7 @@ jobs:
           echo "Pinging Supabase at $(date)"
 
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://zolihrdpfcskqpbwodej.supabase.co/rest/v1/" \
+            "https://zolihrdpfcskqpbwodej.supabase.co/rest/v1/submissions?limit=1" \
             -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpvbGlocmRwZmNza3FwYndvZGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTYyMzgsImV4cCI6MjA5MDczMjIzOH0.3qUlS4jPCROtwNu5vtbWvC3K5hVcEWcU5NZ8Lp4K43E" \
             -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpvbGlocmRwZmNza3FwYndvZGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTYyMzgsImV4cCI6MjA5MDczMjIzOH0.3qUlS4jPCROtwNu5vtbWvC3K5hVcEWcU5NZ8Lp4K43E")
 
