@@ -2,8 +2,8 @@ name: Supabase Keep-Alive Ping
 
 on:
   schedule:
-    - cron: '0 12 */6 * *'  # Runs every 6 days at noon UTC
-  workflow_dispatch:          # Allows manual trigger from GitHub Actions UI
+    - cron: '0 12 */5 * *'  # Every 5 days — stays safely under 7-day pause limit
+  workflow_dispatch:
 
 jobs:
   ping:
@@ -16,8 +16,8 @@ jobs:
 
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
             "https://zolihrdpfcskqpbwodej.supabase.co/rest/v1/submissions?limit=1" \
-            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpvbGlocmRwZmNza3FwYndvZGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTYyMzgsImV4cCI6MjA5MDczMjIzOH0.3qUlS4jPCROtwNu5vtbWvC3K5hVcEWcU5NZ8Lp4K43E" \
-            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpvbGlocmRwZmNza3FwYndvZGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTYyMzgsImV4cCI6MjA5MDczMjIzOH0.3qUlS4jPCROtwNu5vtbWvC3K5hVcEWcU5NZ8Lp4K43E")
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
 
           echo "HTTP Status: $RESPONSE"
 
