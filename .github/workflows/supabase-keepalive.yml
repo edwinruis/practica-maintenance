@@ -2,7 +2,7 @@ name: Supabase Keep-Alive Ping
 
 on:
   schedule:
-    - cron: '0 12 */5 * *'  # Every 5 days — stays safely under 7-day pause limit
+    - cron: '0 12 */5 * *'  # Every 5 days - stays safely under 7-day pause limit
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
           echo "Pinging Supabase at $(date)"
 
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://zolihrdpfcskqpbwodej.supabase.co/rest/v1/submissions?limit=1" \
+            "https://zolihrdpfcskqpbwodej.supabase.co/rest/v1/" \
             -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
 
