@@ -15,7 +15,8 @@ jobs:
           echo "Pinging Supabase at $(date)"
 
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://zolihrdpfcskqpbwodej.supabase.co/auth/v1/health")
+            "https://zolihrdpfcskqpbwodej.supabase.co/auth/v1/health" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}")
 
           echo "HTTP Status: $RESPONSE"
 
